@@ -35,12 +35,17 @@ function inicializaCronometro() {
       tempoRestante--;
       $("#tempo-digitacao").text(tempoRestante);
       if (tempoRestante < 1) {
-        campo.attr("disabled", true);
         clearInterval(cronometroID);
-        campo.toggleClass("campo-desativado");
+        finalizaJogo();
       }
     }, 1000);
   });
+}
+
+function finalizaJogo() {
+  campo.attr("disabled", true);
+  campo.toggleClass("campo-desativado");
+  inserePlacar();
 }
 
 function reiniciaJogo() {
@@ -56,7 +61,7 @@ function reiniciaJogo() {
   campo.removeClass("borda-verde");
 }
 
-function inicializaMarcadores(){
+function inicializaMarcadores() {
   var frase = $(".frase").text();
   campo.on("input", function() {
     var digitado = campo.val();
@@ -67,3 +72,10 @@ function inicializaMarcadores(){
     campo.toggleClass("borda-vermelha", !ehCorreto);
   });
 }
+
+function removeLinha(event) {
+  event.preventDefault();
+  $(this).parent().parent().remove();
+}
+
+$(".botao-remover").click(removeLinha);

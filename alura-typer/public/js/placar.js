@@ -7,6 +7,8 @@ function inserePlacar() {
   linha.find(".botao-remover").click(removeLinha);
 
   corpoTabela.append(linha);
+  $(".placar").slideDown(500);
+  scrollPlacar();
 }
 
 function novaLinha(usuario, palavras) {
@@ -26,4 +28,12 @@ function novaLinha(usuario, palavras) {
   linha.append(colunaRemover);
 
   return linha;
+}
+
+function scrollPlacar() {
+    var posicaoPlacar = $(".placar").offset().top;
+
+    $("html").animate({
+        scrollTop: posicaoPlacar + "px"
+    }, 1000);
 }

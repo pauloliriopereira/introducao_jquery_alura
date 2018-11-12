@@ -61,6 +61,10 @@ function reiniciaJogo() {
   campo.removeClass("borda-verde");
 }
 
+function atualizaTempoInicial(tempo) {
+    $("#tempo-digitacao").text(tempo);
+}
+
 function inicializaMarcadores() {
   var frase = $(".frase").text();
   campo.on("input", function() {
